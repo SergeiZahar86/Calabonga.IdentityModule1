@@ -1,23 +1,33 @@
 {
-    "$schema": "http://json.schemastore.org/launchsettings.json",
-    "profiles": {
-        "Kestrel_dev": {
-            "commandName": "Project",
-            "launchBrowser": true,
-            "launchUrl": "api/manual",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "applicationUrl": "http://localhost:10001"
-        },
-        "Kestrel_prod": {
-            "commandName": "Project",
-            "launchBrowser": true,
-            "launchUrl": "api/manual",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Production"
-            },
-            "applicationUrl": "http://localhost:10001"
-        }
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Kestrel_dev": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/manual",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:10001"
+    },
+    "Kestrel_prod": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/manual",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "applicationUrl": "http://localhost:10001"
+    },
+    "WSL 2": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:10001/api/manual",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "http://localhost:10001",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "distributionName": ""
     }
+  }
 }
