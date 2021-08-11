@@ -26,10 +26,12 @@ namespace Calabonga.IdentityModule1.Data.DatabaseInitialization
 
             foreach (var role in roles)
             {
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
+                var roleManager = scope.ServiceProvider.
+                    GetRequiredService<RoleManager<ApplicationRole>>();
                 if (!context.Roles.Any(r => r.Name == role))
                 {
-                    await roleManager.CreateAsync(new ApplicationRole { Name = role, NormalizedName = role.ToUpper() });
+                    await roleManager.CreateAsync(new ApplicationRole
+                    { Name = role, NormalizedName = role.ToUpper() });
                 }
             }
 

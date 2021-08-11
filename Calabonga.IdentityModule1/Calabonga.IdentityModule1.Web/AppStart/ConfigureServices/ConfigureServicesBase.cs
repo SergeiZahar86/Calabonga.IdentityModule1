@@ -36,7 +36,7 @@ namespace Calabonga.IdentityModule1.Web.AppStart.ConfigureServices
                 // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need. 
                 // For example: "Microsoft.EntityFrameworkCore.SqlServer"
                 // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
-                config.UseSqlite(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
                 // config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
