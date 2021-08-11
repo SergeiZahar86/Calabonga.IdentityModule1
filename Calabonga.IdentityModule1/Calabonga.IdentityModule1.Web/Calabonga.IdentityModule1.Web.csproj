@@ -51,10 +51,4 @@
     <ProjectReference Include="..\Calabonga.IdentityModule1.Data\Calabonga.IdentityModule1.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="MyDB.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
