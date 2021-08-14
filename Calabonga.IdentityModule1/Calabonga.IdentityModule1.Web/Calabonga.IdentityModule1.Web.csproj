@@ -2,10 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\ProjectVisualStudio\2021\Calabonga.IdentityModule1\Calabonga.IdentityModule1\Calabonga.IdentityModule1.Web\Calabonga.IdentityModule1.Web.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>C:\ProjectVisualStudio\2021\Calabonga.IdentityModule1\Calabonga.IdentityModule1\Calabonga.IdentityModule1.Web\Calabonga.IdentityModule1.Web.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DocumentationFile>D:\ProjectVisualStudio\2021\Calab.MassTransitPubSub\Calabonga.IdentityModule1\Calabonga.IdentityModule1\Calabonga.IdentityModule1.Web\Calabonga.IdentityModule1.Web.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,6 +51,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
