@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  calabonga.identitymodule1.web:
+    image: ${DOCKER_REGISTRY-}calabongaidentitymodule1web
+    build:
+      context: .
+      dockerfile: Calabonga.IdentityModule1/Calabonga.IdentityModule1.Web/Dockerfile
+
+    
+  sqldata:
+     image: mcr.microsoft.com/mssql/server:2019-CU12-ubuntu-20.04
+     restart: always
+     environment:
+       SA_PASSWORD: "2712iwitn"
+       ACCEPT_EULA: "Y"
+       MSSQL_PID: Express
+     ports:
+       - "1401:1433"

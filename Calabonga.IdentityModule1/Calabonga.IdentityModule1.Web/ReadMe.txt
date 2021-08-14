@@ -5,3 +5,12 @@ docker run -d -p 1401:1433 -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2712iwitn" -e "MSS
 docker run -d -p 663:80/tcp --name aspnetcore_sample 982615489037
 
 http://localhost:10001/api/manual/index.html
+
+
+
+Для запуска из контейнера необходима поменять настройки
+в appsettings.Development.json и appsettings.Production.json
+строку подключения вместо localhost
+"IdentityServer": {
+    "Url": "http://host.docker.internal:10001"
+  },
