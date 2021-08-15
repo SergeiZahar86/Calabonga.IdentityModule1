@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Calabonga.Contracts;
 using Calabonga.IdentityModule1.Core;
 using Calabonga.IdentityModule1.Data;
 using Calabonga.IdentityModule1.Web.Infrastructure.Auth;
@@ -10,6 +11,7 @@ using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using IdentityModel;
 using IdentityServer4.Extensions;
+using MassTransit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -28,6 +30,7 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
     /// </summary>
     public class AccountService : IAccountService
     {
+        private readonly IPublishEndpoint _publishEndpoint;
         private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
         private readonly ILogger<AccountService> _logger;
         private readonly ApplicationClaimsPrincipalFactory _claimsFactory;
@@ -37,6 +40,7 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
         private readonly RoleManager<ApplicationRole> _roleManager;
 
         public AccountService(
+            IPublishEndpoint publishEndpoint,
             IUserStore<ApplicationUser> userStore,
             IOptions<IdentityOptions> optionsAccessor,
             IPasswordHasher<ApplicationUser> passwordHasher,
@@ -54,6 +58,7 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
             IHttpContextAccessor httpContext,
             IMapper mapper)
         {
+            _publishEndpoint = publishEndpoint;
             _unitOfWork = unitOfWork;
             _logger = logger;
             _claimsFactory = claimsFactory;
@@ -62,9 +67,27 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
 
             // We need to created a custom instance for current service
             // It'll help to use Transaction in the Unit Of Work
-            _userManager = new UserManager<ApplicationUser>(userStore, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, loggerUser);
-            var roleStore = new RoleStore<ApplicationRole, ApplicationDbContext, Guid>(_unitOfWork.DbContext);
-            _roleManager = new RoleManager<ApplicationRole>(roleStore, roleValidators, keyNormalizer, errors, loggerRole);
+            _userManager = new UserManager<ApplicationUser>(
+                userStore,
+                optionsAccessor,
+                passwordHasher,
+                userValidators,
+                passwordValidators,
+                keyNormalizer,
+                errors,
+                services,
+                loggerUser);
+
+            var roleStore = new RoleStore<ApplicationRole, ApplicationDbContext, Guid>(
+                _unitOfWork.DbContext);
+
+            _roleManager = new RoleManager<ApplicationRole>(
+                roleStore,
+                roleValidators,
+                keyNormalizer,
+                errors,
+                loggerRole);
+
         }
 
         /// <inheritdoc />
@@ -109,14 +132,23 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
                     operation.Result = _mapper.Map<UserProfileViewModel>(principal.Identity);
                     operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
                     _logger.LogInformation(operation.GetMetadataMessages());
-                    transaction.Commit();
+                    await transaction.CommitAsync();
+
+                    // публикация события в очередь о том что создан новый пользователь
+                    await _publishEndpoint.Publish(new ApplicationUserCreated 
+                    { 
+                        Id = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName
+                    });
+
                     return await Task.FromResult(operation);
                 }
             }
             var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");
             operation.AddError(string.Join(", ", errors));
             operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
-            transaction.Rollback();
+             await transaction.RollbackAsync();
             return await Task.FromResult(operation);
         }
 
