@@ -11,7 +11,7 @@ namespace Calabonga.IdentityModule1.Core
         /// <summary>
         /// Current service name
         /// </summary>
-        public const string ServiceName = "IdentityModule";
+        public const string ServiceName = "IdentityOrganization";
 
         /// <summary>
         /// "SystemAdministrator"

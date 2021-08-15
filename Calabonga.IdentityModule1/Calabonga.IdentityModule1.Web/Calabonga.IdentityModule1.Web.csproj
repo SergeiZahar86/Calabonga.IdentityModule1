@@ -20,9 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.2" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.2.2" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.2.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.2" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Calabonga.AspNetCore.Controllers" Version="1.1.1" />
+    <PackageReference Include="Calabonga.Contracts" Version="1.0.1" />
     <PackageReference Include="Calabonga.Microservices.Core" Version="2.1.3" />
     <PackageReference Include="Calabonga.UnitOfWork.Controllers" Version="1.2.1" />
     <PackageReference Include="FluentValidation" Version="9.2.2" />
