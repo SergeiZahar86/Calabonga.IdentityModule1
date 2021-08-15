@@ -33,7 +33,7 @@ namespace Calabonga.IdentityModule1.Web.AppStart.ConfigureServices
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice API (with IdentityServer4) module API documentation. This template based on ASP.NET Core 3.1."
+                    Description = "(IDENTITY) Microservice API (with IdentityServer4) module API documentation. This template based on ASP.NET Core 3.1."
                 });
                 options.ResolveConflictingActions(x => x.First());
 

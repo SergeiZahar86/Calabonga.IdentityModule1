@@ -37,6 +37,7 @@ namespace Calabonga.IdentityModule1.Web
             ConfigureServicesControllers.ConfigureServices(services);
             ConfigureServicesMediator.ConfigureServices(services);
             ConfigureServicesValidators.ConfigureServices(services);
+            ConfigureServicesMassTransit.ConfigureServices(services, Configuration);
 
             DependencyContainer.Common(services);
             NimbleDependencyContainer.ConfigureServices(services);

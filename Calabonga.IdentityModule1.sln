@@ -3,36 +3,64 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.IdentityModule1.Web", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Web\Calabonga.IdentityModule1.Web.csproj", "{FE425887-452C-4E46-83DF-98CE5966737F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.IdentityModule1.Web", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Web\Calabonga.IdentityModule1.Web.csproj", "{FE425887-452C-4E46-83DF-98CE5966737F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.IdentityModule1.Data", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Data\Calabonga.IdentityModule1.Data.csproj", "{26C291D2-670F-4B61-961A-74B18E3D8F5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.IdentityModule1.Data", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Data\Calabonga.IdentityModule1.Data.csproj", "{26C291D2-670F-4B61-961A-74B18E3D8F5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.IdentityModule1.Entities", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Entities\Calabonga.IdentityModule1.Entities.csproj", "{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.IdentityModule1.Entities", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Entities\Calabonga.IdentityModule1.Entities.csproj", "{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.IdentityModule1.Core", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Core\Calabonga.IdentityModule1.Core.csproj", "{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.IdentityModule1.Core", "Calabonga.IdentityModule1\Calabonga.IdentityModule1.Core\Calabonga.IdentityModule1.Core.csproj", "{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FE425887-452C-4E46-83DF-98CE5966737F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE425887-452C-4E46-83DF-98CE5966737F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE425887-452C-4E46-83DF-98CE5966737F}.Debug|x64.ActiveCfg = Debug|x64
+		{FE425887-452C-4E46-83DF-98CE5966737F}.Debug|x64.Build.0 = Debug|x64
 		{FE425887-452C-4E46-83DF-98CE5966737F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE425887-452C-4E46-83DF-98CE5966737F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE425887-452C-4E46-83DF-98CE5966737F}.Release|x64.ActiveCfg = Release|x64
+		{FE425887-452C-4E46-83DF-98CE5966737F}.Release|x64.Build.0 = Release|x64
 		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Debug|x64.ActiveCfg = Debug|x64
+		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Debug|x64.Build.0 = Debug|x64
 		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Release|x64.ActiveCfg = Release|x64
+		{26C291D2-670F-4B61-961A-74B18E3D8F5E}.Release|x64.Build.0 = Release|x64
 		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Debug|x64.ActiveCfg = Debug|x64
+		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Debug|x64.Build.0 = Debug|x64
 		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Release|x64.ActiveCfg = Release|x64
+		{C4DAE87A-BC30-4CBD-BF74-AD45C75B3EDD}.Release|x64.Build.0 = Release|x64
 		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Debug|x64.ActiveCfg = Debug|x64
+		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Debug|x64.Build.0 = Debug|x64
 		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Release|x64.ActiveCfg = Release|x64
+		{2096A9B4-717B-4F6E-BBF1-16907E0D8DD1}.Release|x64.Build.0 = Release|x64
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Debug|x64.Build.0 = Debug|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Release|x64.ActiveCfg = Release|Any CPU
+		{EDE99E15-30E7-417F-85CA-BBDDFD7F7107}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
