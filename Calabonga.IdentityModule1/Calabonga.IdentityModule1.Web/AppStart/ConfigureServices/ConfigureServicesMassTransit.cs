@@ -1,4 +1,5 @@
 ﻿using Calabonga.Contracts;
+using Calabonga.IdentityModule1.Web.MassTransit;
 using Calabonga.Microservices.Core.Exceptions;
 using MassTransit;
 using MassTransit.Definition;
@@ -71,7 +72,7 @@ namespace Calabonga.IdentityModule1.Web.AppStart.ConfigureServices
                     });
                     return bus;
                 });
-
+                
                 // регистрация клиента который будет получать ответ
                 // из IApplicationUserProfileRequest
                 x.AddRequestClient<IApplicationUserProfileRequest>();
