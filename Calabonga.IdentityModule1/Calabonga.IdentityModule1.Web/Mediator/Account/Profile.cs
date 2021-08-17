@@ -32,12 +32,16 @@ namespace Calabonga.IdentityModule1.Web.Mediator.Account
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public override async Task<OperationResult<UserProfileViewModel>> Handle(ProfileRequest request, CancellationToken cancellationToken)
+        public override async Task<OperationResult<UserProfileViewModel>> Handle(
+            ProfileRequest request, CancellationToken cancellationToken)
         {
             var user = _httpContextAccessor.HttpContext.User;
             if (user != null)
             {
-                return await _accountService.GetProfileAsync(user.Identity.GetSubjectId());
+                //return await _accountService.GetProfileAsync(user.Identity.GetSubjectId());
+                return await _accountService.GetProfileAsync1(
+                    user.Identity.GetSubjectId(),
+                    cancellationToken);
             }
 
             var operation = OperationResult.CreateResult<UserProfileViewModel>();

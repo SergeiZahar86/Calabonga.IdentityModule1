@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
@@ -30,6 +31,7 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
     /// </summary>
     public class AccountService : IAccountService
     {
+        private readonly IRequestClient<IApplicationUserProfileRequest> _requestClient;
         private readonly IPublishEndpoint _publishEndpoint;
         private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
         private readonly ILogger<AccountService> _logger;
@@ -40,6 +42,7 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
         private readonly RoleManager<ApplicationRole> _roleManager;
 
         public AccountService(
+            IRequestClient<IApplicationUserProfileRequest> requestClient,
             IPublishEndpoint publishEndpoint,
             IUserStore<ApplicationUser> userStore,
             IOptions<IdentityOptions> optionsAccessor,
@@ -58,6 +61,7 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
             IHttpContextAccessor httpContext,
             IMapper mapper)
         {
+            _requestClient = requestClient;
             _publishEndpoint = publishEndpoint;
             _unitOfWork = unitOfWork;
             _logger = logger;
@@ -157,11 +161,41 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public async Task<OperationResult<UserProfileViewModel>> GetProfileAsync(string identifier)
+        public async Task<OperationResult<UserProfileViewModel>> GetProfileAsync(
+            string identifier)
         {
             var operation = OperationResult.CreateResult<UserProfileViewModel>();
             var claimsPrincipal = await GetUserClaimsAsync(identifier);
             operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
+            return await Task.FromResult(operation);
+        }
+
+
+        /// <summary>
+        /// Returns user profile
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<OperationResult<UserProfileViewModel>> GetProfileAsync1(
+            string identifier,
+            CancellationToken cancellationToken)
+        {
+            var operation = OperationResult.CreateResult<UserProfileViewModel>();
+            var claimsPrincipal = await GetUserClaimsAsync(identifier);
+            operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
+
+            // получение ответа по RabbitMQ
+            var request = new ApplicationUserProfileRequest
+            {
+                Id = identifier.ToGuid()
+            };
+
+            Response<IApplicationUserProfileResponse> data = await _requestClient.
+                GetResponse<IApplicationUserProfileResponse>(request, cancellationToken);
+
+            operation.AddSuccess("Additional data for profile received").AddData(data);
+
             return await Task.FromResult(operation);
         }
 

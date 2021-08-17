@@ -5,6 +5,7 @@ using Calabonga.OperationResults;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
@@ -40,6 +41,16 @@ namespace Calabonga.IdentityModule1.Web.Infrastructure.Services
         /// <param name="identifier"></param>
         /// <returns></returns>
         Task<OperationResult<UserProfileViewModel>> GetProfileAsync(string identifier);
+
+        /// <summary>
+        /// Returns user profile
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<OperationResult<UserProfileViewModel>> GetProfileAsync1(
+            string identifier,
+            CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns User by user identifier
